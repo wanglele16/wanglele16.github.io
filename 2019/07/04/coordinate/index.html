@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="地图,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="谁还不是个宝宝呢">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="今天收到产品反馈，有客户发现在微信小程序中使用百度地图导航，导航位置并不准确。这就奇怪了，相同的经纬度坐标在不同地图上为什么显示会有偏差，到底有哪些坐标体系呢？">
+<meta name="keywords" content="地图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="地图坐标系知多少">
+<meta property="og:url" content="http://yoursite.com/2019/07/04/coordinate/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="谁还不是个宝宝呢">
+<meta property="og:description" content="今天收到产品反馈，有客户发现在微信小程序中使用百度地图导航，导航位置并不准确。这就奇怪了，相同的经纬度坐标在不同地图上为什么显示会有偏差，到底有哪些坐标体系呢？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-02T09:34:38.650Z">
+<meta property="og:updated_time" content="2019-07-04T04:15:59.394Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="谁还不是个宝宝呢">
+<meta name="twitter:title" content="地图坐标系知多少">
+<meta name="twitter:description" content="今天收到产品反馈，有客户发现在微信小程序中使用百度地图导航，导航位置并不准确。这就奇怪了，相同的经纬度坐标在不同地图上为什么显示会有偏差，到底有哪些坐标体系呢？">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/04/coordinate/">
 
 
 
 
 
-  <title>tags | Blog</title>
+  <title>地图坐标系知多少 | Blog</title>
   
 
 
@@ -272,40 +273,200 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/04/coordinate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王乐平">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/miaowa.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 3 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/markdown/" style="font-size: 12px; color: #ccc">markdown</a> <a href="/tags/regExp/" style="font-size: 30px; color: #111">regExp</a> <a href="/tags/地图/" style="font-size: 12px; color: #ccc">地图</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">地图坐标系知多少</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-04T00:00:00+08:00">
+                2019-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/踩坑/" itemprop="url" rel="index">
+                    <span itemprop="name">踩坑</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>今天收到产品反馈，有客户发现在微信小程序中使用百度地图导航，导航位置并不准确。<br>这就奇怪了，相同的经纬度坐标在不同地图上为什么显示会有偏差，到底有哪些坐标体系呢？</p>
+<a id="more"></a> 
+
+<h2 id="1-常见坐标系"><a href="#1-常见坐标系" class="headerlink" title="1. 常见坐标系"></a>1. 常见坐标系</h2><h3 id="1-1-GPS-坐标系（wgs84）"><a href="#1-1-GPS-坐标系（wgs84）" class="headerlink" title="1.1 GPS 坐标系（wgs84）"></a>1.1 GPS 坐标系（wgs84）</h3><p><code>wgs84: WorldGeodetic System 1984</code> ，全世界最流行的基准标准系统，是由美国国防部制图局建立。<br>通常通过底层接口得到的定位信息都是 <code>wgs84</code> 坐标系。</p>
+<h3 id="1-2-火星坐标系（GCJ02）"><a href="#1-2-火星坐标系（GCJ02）" class="headerlink" title="1.2 火星坐标系（GCJ02）"></a>1.2 火星坐标系（GCJ02）</h3><p><code>GCJ-02</code> 是国内最广泛使用的坐标体系，是由中国国家测绘局制订的地理信息系统的坐标系统。</p>
+<p>它是一种对经纬度数据的加密算法，即加入随机的偏差，就是对真实坐标系统进行人为的加偏处理，按照特殊的算法，将真实的坐标加密成虚假的坐标，而这个加偏并不是线性的加偏，所以各地的偏移情况都会有所不同。转换完成后，地图上的点会发生几十到几百米的偏移。加密后的坐标也常被人称为火星坐标系统（才不是我们生活在火星上呢）。</p>
+<p>谷歌中国，腾讯地图，高德地图都在用这个坐标体系。</p>
+<p>那么问题来了，地图是偏移的，为什么使用手机地图的时候没感觉到呢？</p>
+<p>因为除了对手机地图加偏外，用户的定位也被加偏处理后再显示在地图上。相关坐标都被同一算法给加偏后，两者完全匹配， GPS 也就可以正常工作，所谓的负负得正 😆 。</p>
+<p>所以在国内出版的各种地图系统、导航设备等，都需要加入国家保密插件。</p>
+<h3 id="1-3-其他坐标体系"><a href="#1-3-其他坐标体系" class="headerlink" title="1.3 其他坐标体系"></a>1.3 其他坐标体系</h3><p>一般都是由 <code>GCJ-02</code> 再次经过偏移算法得到。<br>比如说百度地图（<code>BD-09</code>坐标系）、搜狗地图。</p>
+<h2 id="2-坐标转换"><a href="#2-坐标转换" class="headerlink" title="2. 坐标转换"></a>2. 坐标转换</h2><p>既然有好几种不同的坐标系，自然一个坐标不能同时应用于所有情形，使用前要进行适当转换。<br>常见的有下面几种方式。</p>
+<h3 id="2-1-算法转换"><a href="#2-1-算法转换" class="headerlink" title="2.1 算法转换"></a>2.1 算法转换</h3><p><code>github</code> 上有很多语言提供的转换库，这里列举了一个 <code>Js</code> 库。可以在 <code>NodeJs</code> 或 浏览器中使用：<br><a href="https://github.com/wandergis/coordtransform" target="_blank" rel="noopener">coordtransform 坐标转换</a><br><a href="https://github.com/wandergis/coordtransform" target="_blank" rel="noopener">https://github.com/wandergis/coordtransform</a></p>
+<p>优点：直接使用，方便快捷<br>缺点：看了相关的 <code>issue</code> 发现，在某些坐标系转换时，还是会有一定的误差。</p>
+<h3 id="2-2-Web-API-转换"><a href="#2-2-Web-API-转换" class="headerlink" title="2.2 Web API 转换"></a>2.2 Web API 转换</h3><p>通过各类地图的 <code>Web API</code> 对坐标进行相互转换。</p>
+<ul>
+<li><a href="https://lbs.amap.com/api/webservice/guide/api/convert/" target="_blank" rel="noopener">高德坐标转换</a></li>
+<li><a href="http://lbsyun.baidu.com/index.php?title=webapi/guide/changeposition" target="_blank" rel="noopener">百度坐标转换</a></li>
+<li><a href="http://www.gpsspg.com/api/convert/latlng/" target="_blank" rel="noopener">GPS坐标转换</a></li>
+</ul>
+<p>优点：因为是官方提供的坐标转换，转换的准确度应该较高<br>缺点：得在官方申请相应账号和权限，请求时要传入 <code>key, id</code> 等加密信息。而且得需要额外的网络请求。</p>
+<h3 id="2-3-SDK-API-转换"><a href="#2-3-SDK-API-转换" class="headerlink" title="2.3 SDK API 转换"></a>2.3 SDK API 转换</h3><p>通过嵌入相应的 <code>sdk</code> 后进行转换：</p>
+<ul>
+<li><a href="https://lbs.amap.com/api/android-sdk/guide/computing-equipment/coordinate-transformation/" target="_blank" rel="noopener">高德sdk</a></li>
+<li><a href="http://lbsyun.baidu.com/index.php?title=androidsdk/guide/tool/coordinate" target="_blank" rel="noopener">百度sdk</a></li>
+</ul>
+<p>所以综合考虑后，小程序项目的解决方案就是后端通过相关算法对坐标进行了统一转换。<br>大家可以在遇到类似问题时选择适合自己的解决方案。</p>
+
       
     </div>
     
     
     
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="王乐平 wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/地图/" rel="tag"># 地图</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/01/shuffle/" rel="next" title="Js 数组乱序">
+                <i class="fa fa-chevron-left"></i> Js 数组乱序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -314,6 +475,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTA3Mi8yMTU4OQ=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -334,8 +504,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -407,6 +586,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-常见坐标系"><span class="nav-text">1. 常见坐标系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-GPS-坐标系（wgs84）"><span class="nav-text">1.1 GPS 坐标系（wgs84）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-火星坐标系（GCJ02）"><span class="nav-text">1.2 火星坐标系（GCJ02）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-其他坐标体系"><span class="nav-text">1.3 其他坐标体系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-坐标转换"><span class="nav-text">2. 坐标转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-算法转换"><span class="nav-text">2.1 算法转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Web-API-转换"><span class="nav-text">2.2 Web API 转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-SDK-API-转换"><span class="nav-text">2.3 SDK API 转换</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -592,6 +787,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
