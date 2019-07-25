@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgram/1.jpeg">
 <meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgram/2.png">
-<meta property="og:updated_time" content="2019-07-11T04:41:41.561Z">
+<meta property="og:updated_time" content="2019-07-11T04:56:59.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序底层架构">
 <meta name="twitter:description" content="1. 与h5页面的区别从技术的发展角度来看，微信小程序是从微信中的 webView 和 JS-SDK 进化到了今天的形态。那么，小程序和普通的h5页面到底有什么区别呢？  运行环境：小程序基于浏览器内核重构的内置解析器，而 h5 的宿主环境是浏览器。所以小程序中没有 DOM 和 BOM 的相关 API，jQuery和一些 NPM 包都不能在小程序中使用； 系统权限：小程序能获得更多的系统权限，如网">
@@ -439,7 +439,7 @@
 <h3 id="2-5-更新机制"><a href="#2-5-更新机制" class="headerlink" title="2.5 更新机制"></a>2.5 更新机制</h3><p>开发者在后台发布新版本之后，无法立刻影响到所有现网用户，但最差情况下，也在发布之后 24 小时之内下发新版本信息到用户。</p>
 <p>小程序每次冷启动时，都会检查是否有更新版本，如果发现有新版本，将会异步下载新版本的代码包，并同时用客户端本地的包进行启动，即新版本的小程序需要等下一次冷启动才会应用上。</p>
 <p>所以如果想让用户使用最新版本的小程序，可以利用 <code>wx.getUpdateManager</code> 做个检查更新的功能：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">checkNewVersion() &#123;</span><br><span class="line">   const updateManager = wx.getUpdateManager();</span><br><span class="line">   updateManager.onCheckForUpdate((res) =&gt; &#123;</span><br><span class="line">     console.log(&apos;hasUpdate&apos;, res.hasUpdate);</span><br><span class="line">     // 请求完新版本信息的回调</span><br><span class="line">     if (res.hasUpdate) &#123;</span><br><span class="line">       updateManager.onUpdateReady(() =&gt; &#123;</span><br><span class="line">         this.setData(&#123;</span><br><span class="line">           hasNewVersion: true</span><br><span class="line">         &#125;);</span><br><span class="line">       &#125;);</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">checkNewVersion() &#123;</span><br><span class="line">   <span class="keyword">const</span> updateManager = wx.getUpdateManager();</span><br><span class="line">   updateManager.onCheckForUpdate(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'hasUpdate'</span>, res.hasUpdate);</span><br><span class="line">     <span class="comment">// 请求完新版本信息的回调</span></span><br><span class="line">     <span class="keyword">if</span> (res.hasUpdate) &#123;</span><br><span class="line">       updateManager.onUpdateReady(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">           hasNewVersion: <span class="literal">true</span></span><br><span class="line">         &#125;);</span><br><span class="line">       &#125;);</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
 <p>微信小程序的基础底层架构大概就这么多，有机会再看看源码思考解析吧。</p>
 
@@ -489,6 +489,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/15/miniProgram-start2/" rel="prev" title="小程序项目构建（二）">
+                小程序项目构建（二） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -572,7 +576,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
