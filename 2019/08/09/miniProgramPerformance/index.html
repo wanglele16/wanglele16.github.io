@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="网页性能优化是前端一个老生常谈的话题，但微信小程序因为双线程的架构设计，跟传统 Web 页面不太一样。所以，今天来探究下微信小程序内的性能优化问题。 首先，要问大家一个问题：从打开微信小程序到首页展示在大家面前，要经过哪些过程？（可以类比与前端另一个常见问题：Web 页面从输入 url 到页面展示具体经过了哪些过程） 1. 启动过程相信大家对 Web 页面的展现过程非常清楚。那么小程序呢，简要地说">
+<meta name="description" content="网页性能优化是前端一个老生常谈的话题，但微信小程序因为双线程的架构设计，跟传统 Web 页面不太一样。所以，今天来探究下微信小程序内的性能优化问题。 首先，要问大家一个问题：从打开微信小程序到首页展示在大家面前，要经过哪些过程？（可以类比与前端另一个常见问题：Web 页面从输入 url 到页面展示具体经过了哪些过程）">
 <meta name="keywords" content="性能">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序性能优化技巧">
 <meta property="og:url" content="http://yoursite.com/2019/08/09/miniProgramPerformance/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="网页性能优化是前端一个老生常谈的话题，但微信小程序因为双线程的架构设计，跟传统 Web 页面不太一样。所以，今天来探究下微信小程序内的性能优化问题。 首先，要问大家一个问题：从打开微信小程序到首页展示在大家面前，要经过哪些过程？（可以类比与前端另一个常见问题：Web 页面从输入 url 到页面展示具体经过了哪些过程） 1. 启动过程相信大家对 Web 页面的展现过程非常清楚。那么小程序呢，简要地说">
+<meta property="og:description" content="网页性能优化是前端一个老生常谈的话题，但微信小程序因为双线程的架构设计，跟传统 Web 页面不太一样。所以，今天来探究下微信小程序内的性能优化问题。 首先，要问大家一个问题：从打开微信小程序到首页展示在大家面前，要经过哪些过程？（可以类比与前端另一个常见问题：Web 页面从输入 url 到页面展示具体经过了哪些过程）">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/4.jpeg">
 <meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/5.jpeg">
@@ -98,10 +98,10 @@
 <meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/1.jpeg">
 <meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/2.jpeg">
 <meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/3.jpeg">
-<meta property="og:updated_time" content="2019-08-09T08:25:44.751Z">
+<meta property="og:updated_time" content="2019-08-09T08:26:56.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序性能优化技巧">
-<meta name="twitter:description" content="网页性能优化是前端一个老生常谈的话题，但微信小程序因为双线程的架构设计，跟传统 Web 页面不太一样。所以，今天来探究下微信小程序内的性能优化问题。 首先，要问大家一个问题：从打开微信小程序到首页展示在大家面前，要经过哪些过程？（可以类比与前端另一个常见问题：Web 页面从输入 url 到页面展示具体经过了哪些过程） 1. 启动过程相信大家对 Web 页面的展现过程非常清楚。那么小程序呢，简要地说">
+<meta name="twitter:description" content="网页性能优化是前端一个老生常谈的话题，但微信小程序因为双线程的架构设计，跟传统 Web 页面不太一样。所以，今天来探究下微信小程序内的性能优化问题。 首先，要问大家一个问题：从打开微信小程序到首页展示在大家面前，要经过哪些过程？（可以类比与前端另一个常见问题：Web 页面从输入 url 到页面展示具体经过了哪些过程）">
 <meta name="twitter:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/4.jpeg">
 
 
@@ -388,6 +388,8 @@
       
         <p>网页性能优化是前端一个老生常谈的话题，但微信小程序因为双线程的架构设计，跟传统 <code>Web</code> 页面不太一样。所以，今天来探究下微信小程序内的性能优化问题。</p>
 <p>首先，要问大家一个问题：从打开微信小程序到首页展示在大家面前，要经过哪些过程？（可以类比与前端另一个常见问题：<code>Web</code> 页面从输入 <code>url</code> 到页面展示具体经过了哪些过程）</p>
+<a id="more"></a> 
+
 <h2 id="1-启动过程"><a href="#1-启动过程" class="headerlink" title="1. 启动过程"></a>1. 启动过程</h2><p>相信大家对 <code>Web</code> 页面的展现过程非常清楚。那么小程序呢，简要地说，小程序要历经下面几个启动过程：</p>
 <p><img src="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/4.jpeg" alt="小程序启动过程"></p>
 <ol>
