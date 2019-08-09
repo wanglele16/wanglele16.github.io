@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="markdown,">
+  <meta name="keywords" content="性能,">
 
 
 
@@ -79,20 +79,30 @@
 
 
 
-<meta name="description" content="1. 定义Markdown 是一种轻量级标记语言，让作者专注于写作而不用关注样式。它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面（且Markdown是兼容HTML语法的）。所以用Markdown写文章是最适合不过的啦。">
-<meta name="keywords" content="markdown">
+<meta name="description" content="网页性能优化是前端一个老生常谈的话题，但微信小程序因为双线程的架构设计，跟传统 Web 页面不太一样。所以，今天来探究下微信小程序内的性能优化问题。 首先，要问大家一个问题：从打开微信小程序到首页展示在大家面前，要经过哪些过程？（可以类比与前端另一个常见问题：Web 页面从输入 url 到页面展示具体经过了哪些过程） 1. 启动过程相信大家对 Web 页面的展现过程非常清楚。那么小程序呢，简要地说">
+<meta name="keywords" content="性能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Markdown">
-<meta property="og:url" content="http://yoursite.com/2019/06/14/markdown/index.html">
+<meta property="og:title" content="小程序性能优化技巧">
+<meta property="og:url" content="http://yoursite.com/2019/08/09/miniProgramPerformance/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="1. 定义Markdown 是一种轻量级标记语言，让作者专注于写作而不用关注样式。它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面（且Markdown是兼容HTML语法的）。所以用Markdown写文章是最适合不过的啦。">
+<meta property="og:description" content="网页性能优化是前端一个老生常谈的话题，但微信小程序因为双线程的架构设计，跟传统 Web 页面不太一样。所以，今天来探究下微信小程序内的性能优化问题。 首先，要问大家一个问题：从打开微信小程序到首页展示在大家面前，要经过哪些过程？（可以类比与前端另一个常见问题：Web 页面从输入 url 到页面展示具体经过了哪些过程） 1. 启动过程相信大家对 Web 页面的展现过程非常清楚。那么小程序呢，简要地说">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=580eddc172d98d1076d40b371904df33/8326cffc1e178a82cfd2349df803738da977e825.jpg">
-<meta property="og:updated_time" content="2019-07-02T09:31:40.480Z">
+<meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/4.jpeg">
+<meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/5.jpeg">
+<meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/6.jpeg">
+<meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/7.jpeg">
+<meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/8.jpeg">
+<meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/9.jpeg">
+<meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgram/1.jpeg">
+<meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/10.jpeg">
+<meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/1.jpeg">
+<meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/2.jpeg">
+<meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/3.jpeg">
+<meta property="og:updated_time" content="2019-08-09T08:25:44.751Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Markdown">
-<meta name="twitter:description" content="1. 定义Markdown 是一种轻量级标记语言，让作者专注于写作而不用关注样式。它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面（且Markdown是兼容HTML语法的）。所以用Markdown写文章是最适合不过的啦。">
-<meta name="twitter:image" content="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=580eddc172d98d1076d40b371904df33/8326cffc1e178a82cfd2349df803738da977e825.jpg">
+<meta name="twitter:title" content="小程序性能优化技巧">
+<meta name="twitter:description" content="网页性能优化是前端一个老生常谈的话题，但微信小程序因为双线程的架构设计，跟传统 Web 页面不太一样。所以，今天来探究下微信小程序内的性能优化问题。 首先，要问大家一个问题：从打开微信小程序到首页展示在大家面前，要经过哪些过程？（可以类比与前端另一个常见问题：Web 页面从输入 url 到页面展示具体经过了哪些过程） 1. 启动过程相信大家对 Web 页面的展现过程非常清楚。那么小程序呢，简要地说">
+<meta name="twitter:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/4.jpeg">
 
 
 
@@ -122,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/14/markdown/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/09/miniProgramPerformance/">
 
 
 
 
 
-  <title>Markdown | Blog</title>
+  <title>小程序性能优化技巧 | Blog</title>
   
 
 
@@ -287,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/14/markdown/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/09/miniProgramPerformance/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王乐平">
@@ -304,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Markdown</h1>
+          <h1 class="post-title" itemprop="name headline">小程序性能优化技巧</h1>
         
 
         <div class="post-meta">
@@ -316,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">
-                2019-06-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-09T00:00:00+08:00">
+                2019-08-09
               </time>
             
 
@@ -339,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">小程序</span>
                   </a>
                 </span>
 
@@ -376,147 +386,109 @@
       
 
       
-        <h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h2><p>Markdown 是一种轻量级标记语言，让作者专注于写作而不用关注样式。<br>它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面（且Markdown是兼容HTML语法的）。<br>所以用Markdown写文章是最适合不过的啦。</p>
-<a id="more"></a> 
-
-<h2 id="2-基本语法"><a href="#2-基本语法" class="headerlink" title="2. 基本语法"></a>2. 基本语法</h2><p>Markdown 的语法全由一些符号所组成，其语法主要分为如下几大部分： 标题，段落，分隔线，字体，引用，图片，超链接，列表，表格，代码片段。</p>
-<h3 id="2-1-标题"><a href="#2-1-标题" class="headerlink" title="2.1 标题"></a>2.1 标题</h3><p>在文本前面加上 <code>#</code> 即可创建一级标题。同理，创建二级标题、三级标题等只需要增加 <code>#</code> 个数即可，Markdown 共支持六级标题。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><h3 id="2-2-段落"><a href="#2-2-段落" class="headerlink" title="2.2 段落"></a>2.2 段落</h3><p>使用Markdown分段非常简单，前后至少保留一个空行即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一段文字...</span><br><span class="line"></span><br><span class="line">第二段文字...</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<p>第一段文字…</p>
-<p>第二段文字…</p>
-<h3 id="2-3-分隔线"><a href="#2-3-分隔线" class="headerlink" title="2.3 分隔线"></a>2.3 分隔线</h3><p>三个以上的短线 即可作出分割线。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<hr>
-<h3 id="2-4-字体"><a href="#2-4-字体" class="headerlink" title="2.4 字体"></a>2.4 字体</h3><ul>
-<li>倾斜：左右分别用一个*号包起来</li>
-<li>加粗：左右分别用两个*号包起来</li>
-<li>倾斜加粗：左右分别用三个*号包起来</li>
-<li>删除线：左右分别用两个~~号包起来</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*倾斜*</span><br><span class="line">**加粗**</span><br><span class="line">***倾斜加粗***</span><br><span class="line">~~加删除线~~</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<p><em>倾斜</em><br><strong>加粗</strong><br><strong><em>倾斜加粗</em></strong><br><del>加删除线</del></p>
-<h3 id="2-5-引用"><a href="#2-5-引用" class="headerlink" title="2.5 引用"></a>2.5 引用</h3><p>在引用的文字前加 <code>&gt;</code> 即可。引用也可以嵌套，如加两个 <code>&gt;&gt;</code>, 三个 <code>&gt;&gt;&gt;</code>甚至更多</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 这是引用的内容</span><br><span class="line">&gt;&gt; 这是引用的内容</span><br><span class="line">&gt;&gt;&gt;&gt;&gt; 这是引用的内容</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<blockquote>
-<p>这是引用的内容</p>
-<blockquote>
-<p>这是引用的内容</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>这是引用的内容</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<h3 id="2-6-图片"><a href="#2-6-图片" class="headerlink" title="2.6 图片"></a>2.6 图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![图片alt](图片地址 &quot;图片title&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>图片alt就是显示在图片显示不出来时替代的文字，相当于对图片内容的解释。<br>图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![妙蛙种子](https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=580eddc172d98d1076d40b371904df33/8326cffc1e178a82cfd2349df803738da977e825.jpg &quot;妙蛙种子&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<p><img src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=580eddc172d98d1076d40b371904df33/8326cffc1e178a82cfd2349df803738da977e825.jpg" alt="妙蛙种子" title="妙蛙种子"></p>
-<p>注意：到目前为止， Markdown 还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 <code>&lt;img&gt;</code> 标签。</p>
-<h3 id="2-7-超链接"><a href="#2-7-超链接" class="headerlink" title="2.7 超链接"></a>2.7 超链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[超链接名](超链接地址 &quot;超链接title&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>title可加可不加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[知乎](https://www.zhihu.com)</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<p><a href="https://www.zhihu.com" target="_blank" rel="noopener">知乎</a></p>
-<p>注意：Markdown也支持传统的HTML标签，你也可以直接写成<br><code>&lt;a href=&quot;https://www.zhihu.com&quot;&gt;知乎&lt;/a&gt;</code></p>
-<h3 id="2-8-列表"><a href="#2-8-列表" class="headerlink" title="2.8 列表"></a>2.8 列表</h3><ul>
-<li><p>无序列表<br>无序列表用 <code>- + *</code> 任一开头都可以。<br>注意：<code>- + *</code> 跟内容之间都要有一个空格</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 列表内容</span><br><span class="line">+ 列表内容</span><br><span class="line">* 列表内容</span><br></pre></td></tr></table></figure>
-
-<p>  效果：</p>
-<ul>
-<li>列表内容</li>
-</ul>
-<ul>
-<li>列表内容</li>
-</ul>
-<ul>
-<li>列表内容</li>
-</ul>
+        <p>网页性能优化是前端一个老生常谈的话题，但微信小程序因为双线程的架构设计，跟传统 <code>Web</code> 页面不太一样。所以，今天来探究下微信小程序内的性能优化问题。</p>
+<p>首先，要问大家一个问题：从打开微信小程序到首页展示在大家面前，要经过哪些过程？（可以类比与前端另一个常见问题：<code>Web</code> 页面从输入 <code>url</code> 到页面展示具体经过了哪些过程）</p>
+<h2 id="1-启动过程"><a href="#1-启动过程" class="headerlink" title="1. 启动过程"></a>1. 启动过程</h2><p>相信大家对 <code>Web</code> 页面的展现过程非常清楚。那么小程序呢，简要地说，小程序要历经下面几个启动过程：</p>
+<p><img src="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/4.jpeg" alt="小程序启动过程"></p>
+<ol>
+<li><p>小程序初始化：<br> 微信初始化小程序环境：包括 <code>Js</code> 引擎和 <code>WebView</code> 进行初始化，并注入公共基础库。<br> 这步是微信做的，在用户打开小程序之前就已经准备好了，是小程序运行环境预加载。</p>
 </li>
-<li><p>有序列表<br>数字加点即可。<br>注意：序号跟内容之间要有空格，且列表可以嵌套</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.列表内容</span><br><span class="line">2.列表内容</span><br><span class="line">3.列表内容</span><br></pre></td></tr></table></figure>
+<li><p>下载小程序代码包<br> 对小程序业务代码包进行下载：下载的不是小程序的源代码，而是编译、压缩、打包之后的代码。</p>
+</li>
+<li><p>加载小程序代码包<br>对下载完成对代码包进行注入执行。<br>此时，<code>app.js</code>、页面所在的 <code>Js</code> 文件和所有其他被 <code>require</code> 的 <code>Js</code> 文件会被自动执行一次，小程序基础库会完成所有页面的注册。</p>
+</li>
+<li><p>初始化小程序首页<br> 拉取数据，从逻辑层传递到视图层，进行渲染。</p>
+</li>
+</ol>
+<h2 id="2-性能优化"><a href="#2-性能优化" class="headerlink" title="2. 性能优化"></a>2. 性能优化</h2><p>既然清楚了小程序的启动过程，那我们就可以针对其中的每一个环节进行性能分析和优化。</p>
+<h3 id="2-1-小程序初始化环节"><a href="#2-1-小程序初始化环节" class="headerlink" title="2.1 小程序初始化环节"></a>2.1 小程序初始化环节</h3><p>由于这个环节是微信执行的，属于小程序底层的执行耗时，所以我们开发者无法操控。已知的是：<code>iOS</code> 初始化比 <code>Android</code> 快一些。</p>
+<h3 id="2-2-下载和加载环节"><a href="#2-2-下载和加载环节" class="headerlink" title="2.2 下载和加载环节"></a>2.2 下载和加载环节</h3><p>一般来说：下载环节是耗时比较长的环节。<br>对低于 <code>1MB</code> 的代码包，其下载时间可以控制在 929ms（iOS）、1500ms（Android）内。<br>那么提升下载性能最关键的一点是：控制包的大小。</p>
+<p>常见的控制代码包大小的方法如下：</p>
+<ul>
+<li>精简代码，清除无用代码</li>
+<li>减少在代码包中直接嵌入的资源文件</li>
+<li>图片放在cdn，使用适当的图片格式</li>
+</ul>
+<p>如果小程序比较复杂，优化后的代码总量仍然较大，此时可以采用分包加载的方式进行优化。</p>
+<p>其原理是：<br>一般情况下，小程序的代码将打包在一起，在小程序启动时一次性下载完成。<br>采用分包时，小程序的代码包可以被划分为几个：一个是“主包”，包含小程序启动时会马上打开的页面代码和相关资源；其余是“分包”，包含其余的代码和资源。<br>这样，小程序启动时，只需要先将主包下载完成，就可以立刻启动小程序。这样就可以显著降低小程序代码包的下载时间。</p>
+<p><img src="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/5.jpeg" alt="分包"></p>
+<p>但是这个时候又出现了另一个问题，在我们访问分包页面时，需要先下载完分包代码，才能打开分包页面，这是能感觉到到明显卡顿，体验也是比较差的。</p>
+<p><img src="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/6.jpeg" alt="分包启动"></p>
+<p>我们可以通过配置 <code>preloadRule</code> 进行分包预加载：打开首页，加载完主包后，静默加载其他分包。</p>
+<p><img src="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/7.jpeg" alt="分包预加载"></p>
+<p>除了普通分包方案，小程序还有独立分包的方案。<br>独立分包是小程序中一种特殊类型的分包，可以独立于主包和其他分包运行。从独立分包中页面进入小程序时，不需要下载主包。当用户进入普通分包或主包内页面时，主包才会被下载。<br>我们可以把它用于一些比较独立的页面，比如活动页等。</p>
+<p><img src="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/8.jpeg" alt="普通分包启动"></p>
+<p><img src="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/9.jpeg" alt="独立分包启动"></p>
+<h3 id="2-3-初始化首页环节"><a href="#2-3-初始化首页环节" class="headerlink" title="2.3 初始化首页环节"></a>2.3 初始化首页环节</h3><p>到了首屏渲染这个环节，有以下的几个优化建议：</p>
+<ol>
+<li><p>提前请求：在页面 <code>onLoad</code> 阶段就可以发起异步请求，不用等页面 <code>ready</code>。如果能在前置页面点击跳转时预请求当前页的核心异步请求，效果会更好；</p>
+</li>
+<li><p>善用缓存：对一些变动频率很低的异步数据进行缓存，下次启动时可以直接利用；</p>
+</li>
+<li><p>优化交互：在首屏渲染的期间，利用 <code>loading</code> 效果或展示骨架图，来缓解用户等待的焦虑。</p>
+</li>
+</ol>
+<p>其实，页面初始化的时间大致由页面初始数据通信时间和初始渲染时间两部分构成。其中，数据通信的时间指数据从逻辑层开始组织数据到视图层完全接收完毕的时间，数据量小于 <code>64KB</code> 时总时长可以控制在30ms内。传输时间与数据量大体上呈现正相关关系，传输过大的数据将使这一时间显著增加。因而减少传输数据量是降低数据传输时间的有效方式。</p>
+<p>初始渲染完毕后，视图层可以在开发者调用setData后执行界面更新。</p>
+<h3 id="2-4-setData-优化"><a href="#2-4-setData-优化" class="headerlink" title="2.4 setData 优化"></a>2.4 setData 优化</h3><h4 id="2-4-1-setData-的工作原理"><a href="#2-4-1-setData-的工作原理" class="headerlink" title="2.4.1 setData 的工作原理"></a>2.4.1 setData 的工作原理</h4><p>与传统的浏览器 <code>Web</code> 页面最大区别在于，小程序的是基于 <strong>双线程</strong> 模型：<br>在这种架构中，视图层使用 <code>WebView</code> 作为渲染载体，而逻辑层是由独立的 <code>JavascriptCore</code> 作为运行环境。</p>
+<p>两者都是独立的模块，并不具备数据直接共享的通道。视图层和逻辑层的数据传输，要由 Native 的 <code>JSBrigde</code> 做中转。</p>
+<p><img src="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgram/1.jpeg" alt="双线程模型"></p>
+<p>小程序通过 <code>setData</code> 更新数据到视图改变，完整的流程如下：</p>
+<ol>
+<li>调用 <code>setData</code> 方法;</li>
+<li>逻辑层会执行一次 <code>JSON.stringify</code> 来去除掉 <code>setData</code> 数据中不可传输的部分，将待传输数据转换成字符串并拼接到特定的JS脚本, 并通过 <code>evaluateJavascript</code> 执行脚本将数据传输到渲染层。</li>
+<li>渲染层接收到后， <code>WebView JS</code> 线程会对脚本进行编译，得到待更新数据后进入渲染队列等待 <code>WebView</code> 线程空闲时进行页面渲染。</li>
+<li><code>WebView</code> 线程开始执行渲染时，将 <code>data</code> 和 <code>setData</code> 数据套用在<code>WXML</code> 片段上，得到一个新节点树。经过新虚拟节点树与当前节点树的 <code>diff</code> 对比，将差异部分更新到UI视图。最后，将 <code>setData</code> 数据合并到 <code>data</code> 中，并用新节点树替换旧节点树，用于下一次重渲染。</li>
+</ol>
+<h4 id="2-4-2-setData-注意事项"><a href="#2-4-2-setData-注意事项" class="headerlink" title="2.4.2 setData 注意事项"></a>2.4.2 setData 注意事项</h4><p>如上文所说：一次 <code>setData</code> 带来两次开销：通信的开销 + <code>WebView</code> 更新的开销。<br><code>setData</code> 是小程序开发使用最频繁的 <code>API</code> 之一，也是最容易引发性能问题的。</p>
+<p>所以使用时需要注意以下几点：</p>
+<ol>
+<li><p>与界面渲染无关的数据最好不要设置在 <code>data</code> 中，可以考虑设置在 <code>page</code> 对象的其他字段下；</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">this.setData(&#123;</span><br><span class="line">    a: &apos;与渲染有关的字符串&apos;,</span><br><span class="line">    b: &apos;与渲染无关的字符串&apos;</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">// 可以优化为</span><br><span class="line">this.setData(&#123;</span><br><span class="line">    a: &apos;与渲染有关的字符串&apos;,</span><br><span class="line"> &#125;)</span><br><span class="line">this.b = &apos;与渲染无关的字符串&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不要过于频繁调用 <code>setData</code>，应考虑将多次 <code>setData</code> 合并成一次 <code>setData</code> 调用；</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.setData(&#123; a: 1 &#125;)</span><br><span class="line">this.setData(&#123; b: 2 &#125;)</span><br><span class="line">// 可优化为</span><br><span class="line">this.setData(&#123; a: 1, b: 2 &#125;)</span><br></pre></td></tr></table></figure>
 
 
 </li>
-</ul>
-<pre><code>效果：
+</ol>
+<pre><code>当需要在频繁触发的用户事件(如 PageScroll 、 Resize 事件)中调用 setData ，合理的利用函数防抖(debounce) 和 函数节流(throttle) 。
 
-1.列表内容
-2.列表内容
-3.列表内容</code></pre><h3 id="2-9-表格"><a href="#2-9-表格" class="headerlink" title="2.9 表格"></a>2.9 表格</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">|表头|表头|表头|</span><br><span class="line">|---|:---:|---:|</span><br><span class="line">|内容短|内容|内容长一点|</span><br><span class="line">|内容|内容|内容|</span><br><span class="line"></span><br><span class="line">第二行分割表头和内容。</span><br><span class="line">文字默认居左</span><br><span class="line">-两边加：表示文字居中</span><br><span class="line">-右边加：表示文字居右</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<table>
-<thead>
-<tr>
-<th>表头</th>
-<th align="center">表头</th>
-<th align="right">表头</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>内容短</td>
-<td align="center">内容</td>
-<td align="right">内容长一点</td>
-</tr>
-<tr>
-<td>内容</td>
-<td align="center">内容</td>
-<td align="right">内容</td>
-</tr>
-</tbody></table>
-<h3 id="2-10-代码"><a href="#2-10-代码" class="headerlink" title="2.10 代码"></a>2.10 代码</h3><ul>
-<li>单行代码：代码之间分别用一个反引号包起来</li>
-<li>多行代码：代码之间分别用三个反引号包起来，且两边的反引号单独占一行</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`代码内容`</span><br></pre></td></tr></table></figure>
-
-<pre><code>多行代码
-多行代码
-多行代码
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">效果：</span><br><span class="line"></span><br><span class="line">`代码内容`</span><br></pre></td></tr></table></figure></code></pre><p>   多行代码<br>   多行代码<br>   多行代码<br>```</p>
-<h2 id="3-使用"><a href="#3-使用" class="headerlink" title="3. 使用"></a>3. 使用</h2><p>以下是常用的 markdown 工具和支持 markdown 语法的在线平台</p>
-<ul>
-<li><p>软件</p>
-<ul>
-<li><a href="https://zh.mweb.im/" target="_blank" rel="noopener">mweb</a></li>
-<li><a href="https://maxiang.io/" target="_blank" rel="noopener">马克飞象</a></li>
-<li><a href="http://25.io/mou" target="_blank" rel="noopener">Mou</a></li>
-</ul>
+还可以自己设计一个 `diff` 算法，重新对 setData 进行封装，使得在 `setData` 执行之前，让待更新的数据与原 `data` 数据做 `diff `对比，如果一样则跳过执行更新。不少小程序框架都有其类似的封装。</code></pre><ol start="3">
+<li><p>列表局部更新<br> 在更新列表的某一个数据时。不要用 <code>setData</code> 进行全部数据的刷新。查找对应 <code>id</code> 的那条数据的下标（<code>index</code>是不会改变的），用 <code>setData</code> 进行局部刷新。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.setData(&#123;</span><br><span class="line">    `list[$&#123;index&#125;]` = newList[index]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>平台</p>
-<ul>
-<li>github</li>
-<li>简书</li>
-<li>Stack Overflow</li>
-</ul>
+<li><p>合理使用小程序组件<br> 自定义组件的更新只在组件内部进行，不会影响页面其他元素。因为各个组件具有独立的逻辑空间、数据、样式环境及 <code>setData</code> 调用。<br> 基于自定义组件的 <code>Shadow DOM</code> 模型设计，我们可以将页面中一些需要高频执行 <code>setData</code> 更新的功能模块（如倒计时、进度条等）封装成自定义组件嵌入到页面中。<br> 当这些自定义组件视图需要更新时，执行的是组件自己的 <code>setData</code>，新旧节点树的对比计算和渲染树的更新都只限于组件内有限的节点数量，有效降低渲染时间开销。</p>
+<p> <img src="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/10.jpeg" alt="自定义组件"></p>
+<p> 当然，并不是使用自定义组件越多会越好，页面每新增一个自定义组件， <code>Exparser</code> 需要多管理一个组件实例，内存消耗会更大。因此要合理的使用自定义组件，同时页面设计也要注意不滥用标签。</p>
 </li>
-<li><p>在线编辑器</p>
+</ol>
+<h2 id="3-分析工具"><a href="#3-分析工具" class="headerlink" title="3. 分析工具"></a>3. 分析工具</h2><p>其实性能优化最重要的是拿数据说话。但是现在小程序里没有完整成熟的定量的性能评测标准，目前有以下的分析工具可供参考：</p>
+<ol>
+<li><p>性能 Trace 工具<br> 微信 <code>Andoid 6.5.10</code> 开始，提供了 <code>Trace</code> 导出工具，开发者可以在开发者工具 <code>Trace Panel</code> 中使用该功能。<br> 使用教程：<br> <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/performance/tools.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/performance/tools.html</a></p>
+</li>
+<li><p>性能面板<br> 从微信 <code>6.5.8</code> 开始，提供了性能面板让开发者了解小程序的性能。开发者可以在开发版小程序下打开性能面板。<br> 打开方法：进入开发版小程序，进入右上角更多按钮，点击 <em>显示性能窗口</em></p>
+</li>
+<li><p>加载性能监控<br> 在小程序后台，我们可以看到加载性能监控。指标有三个：</p>
+</li>
+</ol>
 <ul>
-<li><a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="noopener">Cmd Markdown 编辑阅读器</a></li>
-</ul>
+<li><p>启动总耗时<br><img src="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/1.jpeg" alt="总启动耗时"></p>
+</li>
+<li><p>下载耗时<br><img src="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/2.jpeg" alt="下载耗时"></p>
+</li>
+<li><p>初次渲染耗时<br><img src="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramPerformance/3.jpeg" alt="初次渲染耗时"></p>
 </li>
 </ul>
+<p>总启动耗时 = 下载耗时 + 初次渲染耗时 + 其他耗时。</p>
+<p>优化后可根据以上几个工具进行数据对比，来判断优化的效果。</p>
+<blockquote>
+<p>主要参考来源：</p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/1akI1YhK1zGqxPTa50n65A" target="_blank" rel="noopener">微信小程序性能优化方案</a></li>
+<li><a href="https://mp.weixin.qq.com/s/aAzwYA_RnKSt-y8xDHTtPQ" target="_blank" rel="noopener">微信小程序渲染性能调优</a></li>
+</ul>
+</blockquote>
 
       
     </div>
@@ -542,7 +514,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/markdown/" rel="tag"># markdown</a>
+            <a href="/tags/性能/" rel="tag"># 性能</a>
           
         </div>
       
@@ -555,15 +527,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/25/miniProgram-start2/" rel="next" title="小程序项目构建（二）">
+                <i class="fa fa-chevron-left"></i> 小程序项目构建（二）
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/18/regExp1/" rel="prev" title="最常用的正则表达式（一）">
-                最常用的正则表达式（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -712,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-定义"><span class="nav-text">1. 定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-基本语法"><span class="nav-text">2. 基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-标题"><span class="nav-text">2.1 标题</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#一级标题"><span class="nav-text">一级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二级标题"><span class="nav-text">二级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三级标题"><span class="nav-text">三级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#四级标题"><span class="nav-text">四级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#五级标题"><span class="nav-text">五级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#六级标题"><span class="nav-text">六级标题</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-段落"><span class="nav-text">2.2 段落</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-分隔线"><span class="nav-text">2.3 分隔线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-字体"><span class="nav-text">2.4 字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-引用"><span class="nav-text">2.5 引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-图片"><span class="nav-text">2.6 图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-超链接"><span class="nav-text">2.7 超链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-列表"><span class="nav-text">2.8 列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-表格"><span class="nav-text">2.9 表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-代码"><span class="nav-text">2.10 代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-使用"><span class="nav-text">3. 使用</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-启动过程"><span class="nav-text">1. 启动过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-性能优化"><span class="nav-text">2. 性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-小程序初始化环节"><span class="nav-text">2.1 小程序初始化环节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-下载和加载环节"><span class="nav-text">2.2 下载和加载环节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-初始化首页环节"><span class="nav-text">2.3 初始化首页环节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-setData-优化"><span class="nav-text">2.4 setData 优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-1-setData-的工作原理"><span class="nav-text">2.4.1 setData 的工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-2-setData-注意事项"><span class="nav-text">2.4.2 setData 注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-分析工具"><span class="nav-text">3. 分析工具</span></a></li></ol></div>
             
 
           </div>
