@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="当我们在准备开发微信小程序之前，首先要进行框架选型。现在微信小程序框架有好几种，我们该怎样来选择一个适合自己项目的框架呢？ 1. 框架选型下面列出原生框架和一些主流框架之间的对比：     原生 mpvue wepy taro    语法 小程序 vue.js 类vue.js react.js   标签 小程序 html + 小程序 小程序 小程序   组件规范 小程序组件 vue 组件规范 小程">
+<meta name="description" content="用户登录是一个系统的必备功能。而小程序的登录流程和Web端又有一些不同，主要是要与微信服务器进行通信验证。下面我们就来看下小程序具体的登录流程。 1. 登录流程小程序可以通过微信官方提供的登录能力方便地获取微信提供的用户身份标识，快速建立小程序内的用户体系。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小程序项目构建（一）">
-<meta property="og:url" content="http://yoursite.com/2019/07/19/miniProgram-start1/index.html">
+<meta property="og:title" content="小程序登录流程全解析">
+<meta property="og:url" content="http://yoursite.com/2019/09/16/miniProgram-login/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="当我们在准备开发微信小程序之前，首先要进行框架选型。现在微信小程序框架有好几种，我们该怎样来选择一个适合自己项目的框架呢？ 1. 框架选型下面列出原生框架和一些主流框架之间的对比：     原生 mpvue wepy taro    语法 小程序 vue.js 类vue.js react.js   标签 小程序 html + 小程序 小程序 小程序   组件规范 小程序组件 vue 组件规范 小程">
+<meta property="og:description" content="用户登录是一个系统的必备功能。而小程序的登录流程和Web端又有一些不同，主要是要与微信服务器进行通信验证。下面我们就来看下小程序具体的登录流程。 1. 登录流程小程序可以通过微信官方提供的登录能力方便地获取微信提供的用户身份标识，快速建立小程序内的用户体系。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-25T08:30:36.207Z">
+<meta property="og:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramLogin/loginjpg.jpg">
+<meta property="og:updated_time" content="2019-09-27T09:41:44.391Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小程序项目构建（一）">
-<meta name="twitter:description" content="当我们在准备开发微信小程序之前，首先要进行框架选型。现在微信小程序框架有好几种，我们该怎样来选择一个适合自己项目的框架呢？ 1. 框架选型下面列出原生框架和一些主流框架之间的对比：     原生 mpvue wepy taro    语法 小程序 vue.js 类vue.js react.js   标签 小程序 html + 小程序 小程序 小程序   组件规范 小程序组件 vue 组件规范 小程">
+<meta name="twitter:title" content="小程序登录流程全解析">
+<meta name="twitter:description" content="用户登录是一个系统的必备功能。而小程序的登录流程和Web端又有一些不同，主要是要与微信服务器进行通信验证。下面我们就来看下小程序具体的登录流程。 1. 登录流程小程序可以通过微信官方提供的登录能力方便地获取微信提供的用户身份标识，快速建立小程序内的用户体系。">
+<meta name="twitter:image" content="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramLogin/loginjpg.jpg">
 
 
 
@@ -119,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/19/miniProgram-start1/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/16/miniProgram-login/">
 
 
 
 
 
-  <title>小程序项目构建（一） | Blog</title>
+  <title>小程序登录流程全解析 | Blog</title>
   
 
 
@@ -284,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/19/miniProgram-start1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/miniProgram-login/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王乐平">
@@ -301,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">小程序项目构建（一）</h1>
+          <h1 class="post-title" itemprop="name headline">小程序登录流程全解析</h1>
         
 
         <div class="post-meta">
@@ -313,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-19T00:00:00+08:00">
-                2019-07-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T00:00:00+08:00">
+                2019-09-16
               </time>
             
 
@@ -373,120 +375,31 @@
       
 
       
-        <p>当我们在准备开发微信小程序之前，首先要进行框架选型。现在微信小程序框架有好几种，我们该怎样来选择一个适合自己项目的框架呢？</p>
-<h2 id="1-框架选型"><a href="#1-框架选型" class="headerlink" title="1. 框架选型"></a>1. 框架选型</h2><p>下面列出原生框架和一些主流框架之间的对比：</p>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">原生</th>
-<th align="center">mpvue</th>
-<th align="center">wepy</th>
-<th align="center">taro</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">语法</td>
-<td align="center">小程序</td>
-<td align="center">vue.js</td>
-<td align="center">类vue.js</td>
-<td align="center">react.js</td>
-</tr>
-<tr>
-<td align="center">标签</td>
-<td align="center">小程序</td>
-<td align="center">html + 小程序</td>
-<td align="center">小程序</td>
-<td align="center">小程序</td>
-</tr>
-<tr>
-<td align="center">组件规范</td>
-<td align="center">小程序组件</td>
-<td align="center">vue 组件规范</td>
-<td align="center">小程序自定义组件</td>
-<td align="center">react 组件规范</td>
-</tr>
-<tr>
-<td align="center">样式规范</td>
-<td align="center">wxss</td>
-<td align="center">sass, less, stylus</td>
-<td align="center">sass, less, stylus</td>
-<td align="center">sass, less, stylus, CSS Modules</td>
-</tr>
-<tr>
-<td align="center">多端复用</td>
-<td align="center">小程序</td>
-<td align="center">H5, 小程序</td>
-<td align="center">H5, 小程序</td>
-<td align="center">H5, RN, 小程序</td>
-</tr>
-<tr>
-<td align="center">数据管理</td>
-<td align="center">无</td>
-<td align="center">Vuex</td>
-<td align="center">Redux</td>
-<td align="center">Redux/Mobx/Dva</td>
-</tr>
-<tr>
-<td align="center">自动构建</td>
-<td align="center">无</td>
-<td align="center">webpack</td>
-<td align="center">框架内置</td>
-<td align="center">webpack</td>
-</tr>
-<tr>
-<td align="center">成本</td>
-<td align="center">学习小程序</td>
-<td align="center">学习 vue</td>
-<td align="center">学习 vue 和 wepy</td>
-<td align="center">学习 react</td>
-</tr>
-</tbody></table>
-<p>可以看到：原生框架在自动构建、 <code>css</code> 预处理、数据管理和多端复用有一定的欠缺。</p>
+        <p>用户登录是一个系统的必备功能。而小程序的登录流程和<code>Web</code>端又有一些不同，主要是要与微信服务器进行通信验证。下面我们就来看下小程序具体的登录流程。</p>
+<h2 id="1-登录流程"><a href="#1-登录流程" class="headerlink" title="1. 登录流程"></a>1. 登录流程</h2><p>小程序可以通过微信官方提供的登录能力方便地获取微信提供的用户身份标识，快速建立小程序内的用户体系。</p>
+<p><img src="https://blog-wlp.oss-cn-beijing.aliyuncs.com/blog/miniProgramLogin/loginjpg.jpg" alt="小程序登录时序图"></p>
 <a id="more"></a> 
 
-<p>但是综合考虑到我们的业务需求和团队成员，还是选择了使用原生框架进行开发：</p>
-<ol>
-<li>对多端复用的需求较弱;</li>
-<li>团队里熟悉 vue 和小程序语法的同学较多;</li>
-<li>时间有限，不想踩太多坑。</li>
+<h2 id="2-登录逻辑："><a href="#2-登录逻辑：" class="headerlink" title="2. 登录逻辑："></a>2. 登录逻辑：</h2><ol>
+<li><p>调用 <code>wx.login()</code> 获取 临时登录凭证 <code>code</code>，有效期为 5分钟；（临时登录凭证 <code>code</code> 只能使用一次）</p>
+</li>
+<li><p>将临时 <code>code</code> 传到我们的后端，后端调用 <code>auth.code2Session</code> 接口，换取用户唯一标识 <code>OpenID</code> 和 会话密钥 <code>session_key</code>；（ <code>openid</code> 是用户唯一标识，<code>session_key</code> 能保证当前用户进行会话操作的有效性）</p>
+<p> 注意：获取 <code>session_key</code> 出于安全性的考虑，要在后端调用。如果我们在前端通过 <code>request</code> 调用此接口，就不可避免的需要将我们小程序的<code>appid</code> 、<code>secret</code> 和服务端下发的 <code>session_key</code> 暴露在外部，会给我们的业务安全带来极大的风险。<br> <code>session_key</code> 拥有一定的时效性。用户越久未使用小程序，用户登录态越有可能失效。反之如果用户一直在使用小程序，则用户登录态一直保持有效。具体时效逻辑由微信维护，对开发者透明。开发者需要调用 <code>wx.checkSession</code> 接口检测当前用户登录态是否有效。</p>
+</li>
+<li><p>后端自定义新的密钥并关联返回的 <code>session_key</code> 和 <code>openid</code>，将新的密钥返给前端，前端将其存储在 <code>storage</code> 中。（会话密钥 <code>session_key</code> 是对用户数据进行 <strong>加密签名</strong> 的密钥。为了应用自身的数据安全，开发者服务器不应该把会话密钥下发到小程序，也不应该对外提供这个密钥，所以要定义新的密钥）。<br> 之所以存在storage中，是因为小程序没有 <code>cookie</code>，相应的后端 <code>set-cookie</code> 在小程序中不起作用。</p>
+</li>
+<li><p>前端发送请求的时候，带着密钥，后端根据密钥识别用户身份，返回数据。</p>
+</li>
 </ol>
-<p>其实使用原生框架还有下面几个好处：</p>
-<ol>
-<li>小程序特性更新迭代较快，可以尽快使用新特性而不需要考虑三方框架更新的问题；</li>
-<li>排查问题、性能调优更方便。</li>
-</ol>
-<p>那么，既然选择了原生框架，那么接下来几个明显的短板问题需要解决。</p>
-<h2 id="2-自动构建"><a href="#2-自动构建" class="headerlink" title="2. 自动构建"></a>2. 自动构建</h2><p>小程序开发者工具其实已经提供了部分能力:</p>
-<ul>
-<li>ES7/ES6 转 ES5</li>
-<li>样式补全</li>
-<li>NPM 包管理</li>
-<li>压缩混淆</li>
-<li>…</li>
-</ul>
-<p>剩下的构建工作涉及文件处理比较多，使用 <code>gulp</code> 开发效率较高，所以我们使用 <code>gulp</code> 来进行工程化处理。</p>
-<h2 id="3-css-预处理"><a href="#3-css-预处理" class="headerlink" title="3. css 预处理"></a>3. css 预处理</h2><p>一般来说使用 <code>less</code> / <code>sass</code> / <code>stylus</code> 都可以。这里使用 <code>less</code> 举例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;wxss&apos;, function() &#123;</span><br><span class="line">    return gulp.src([&apos;src/**/*.less&apos;])</span><br><span class="line">        .pipe(less())</span><br><span class="line">        .pipe(minifyCss())</span><br><span class="line">        .pipe(rename(&#123;</span><br><span class="line">            extname: &quot;.wxss&quot;</span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(&apos;dist&apos;))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="3-遇到的问题"><a href="#3-遇到的问题" class="headerlink" title="3. 遇到的问题"></a>3. 遇到的问题</h2><p>在接口报401错误时，对其做登录处理，登录成功后再次调用接口。这种情况下，多接口并行就会出现问题。<br>因为多接口都会调 <code>wx.login</code> 获取 <code>code</code> 后再调后端的登录接口，而登录凭证 <code>code</code> 只能使用一次，这时候后端对多接口就会接收到不同的 <code>code</code>，返回的自定义密钥就会有多个，不能保持统一。</p>
+<!--原因是 `wx.login` 调用时，用户的 `session_key` 可能会被更新而致使旧 `session_key` 失效（刷新机制存在最短周期，如果同一个用户短时间内多次调用 wx.login，并非每次调用都导致 session_key 刷新）-->
+<p>处理的方案是后端在一定时间内对用户自定义登录态做缓存。接口调 <code>wx.login</code> 获取 <code>code</code> 后再调后端的登录接口时，判断后端缓存中有无此用户，如果没有，返回新的密钥，如果缓存中存在此用户并在缓存有效时间内，就查找并返回之前的密钥。</p>
+<h2 id="4-具体代码"><a href="#4-具体代码" class="headerlink" title="4. 具体代码"></a>4. 具体代码</h2><p><code>checkSession</code>: 检查登录态是否过期。<br>通过 <code>wx.login</code> 接口获得的用户登录态拥有一定的时效性。用户越久未使用小程序，用户登录态越有可能失效。反之如果用户一直在使用小程序，则用户登录态一直保持有效。具体时效逻辑由微信维护，对开发者透明。开发者只需要调用 <code>wx.checkSession</code> 接口检测当前用户登录态是否有效。<br>登录态过期后开发者可以再调用 <code>wx.login</code> 获取新的用户登录态。调用成功说明当前 <code>session_key</code> 未过期，调用失败说明 <code>session_key</code> 已过期。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">checkSession: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> wx.pro.checkSession().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(<span class="string">'result1'</span>)</span><br><span class="line">  &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.login()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">login: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> wx.pro.login().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(res.code)</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.getRequest(&#123;</span><br><span class="line">      method: <span class="string">'POST'</span>,</span><br><span class="line">      url: <span class="string">"***/login"</span>,</span><br><span class="line">      data: &#123;</span><br><span class="line">        code: res</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> Cookie = res &amp;&amp; res.header &amp;&amp; res.header[<span class="string">'Set-Cookie'</span>] || <span class="string">''</span>;</span><br><span class="line">    Cookie = <span class="keyword">this</span>.getCookie(<span class="string">'cookie-key'</span>, Cookie)</span><br><span class="line">    wx.setStorageSync(<span class="string">'Cookie'</span>, Cookie)</span><br><span class="line">    <span class="keyword">this</span>.globalData.Cookie = Cookie</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(<span class="string">'result2'</span>)</span><br><span class="line">  &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'loginErr'</span>, err)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">getCookie(name, cookie) &#123;</span><br><span class="line">  <span class="keyword">let</span> arr, reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(^| )"</span> + name + <span class="string">"=([^;]*)(;|$)"</span>);</span><br><span class="line">  <span class="keyword">return</span> (arr = cookie.match(reg)) ? <span class="built_in">unescape</span>(arr[<span class="number">2</span>]) : <span class="literal">null</span>;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">getRequest: <span class="function"><span class="keyword">function</span> (<span class="params">data, tryNum = <span class="number">1</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> header = <span class="built_in">Object</span>.assign(&#123;</span><br><span class="line">    <span class="string">"Content-Type"</span>: <span class="string">"application/x-www-form-urlencoded"</span>,</span><br><span class="line">  &#125;, data.header)</span><br><span class="line">  <span class="keyword">if</span> (data.url !== <span class="string">'**/login'</span>) &#123;</span><br><span class="line">    header = <span class="built_in">Object</span>.assign(header, &#123;</span><br><span class="line">      <span class="string">"Cookie"</span>: <span class="string">`cookie-key=<span class="subst">$&#123;<span class="keyword">this</span>.globalData.Cookie&#125;</span>`</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    wx.request(&#123;</span><br><span class="line">      url: (data.mode !== <span class="string">'debug'</span> ? Env_config[envObj.env].api : <span class="string">''</span>) + data.url,</span><br><span class="line">      method: data.method || <span class="string">"GET"</span>,</span><br><span class="line">      header: header,</span><br><span class="line">      data: data.data,</span><br><span class="line">      success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (res &amp;&amp; res.statusCode === <span class="number">200</span>) &#123;</span><br><span class="line">          resolve(res)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (res.statusCode === <span class="number">401</span>) &#123;</span><br><span class="line">          wx.showToast(&#123;</span><br><span class="line">            title: <span class="string">'登录失效，请重新登录'</span>,</span><br><span class="line">            icon: <span class="string">'none'</span>,</span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="keyword">if</span> (tryNum &gt; maxTryNum) <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">this</span>.login().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.getRequest(data, ++tryNum)</span><br><span class="line">          &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> resolve(res))</span><br><span class="line">              .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">                reject(err)</span><br><span class="line">              &#125;)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            wx.showToast(&#123;</span><br><span class="line">              title: res &amp;&amp; res.data &amp;&amp; res.data.msg || <span class="string">'服务异常，请稍后重试'</span>,</span><br><span class="line">              icon: <span class="string">'none'</span></span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;, <span class="number">0</span>)</span><br><span class="line">          reject(res)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      fail: <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          wx.showToast(&#123;</span><br><span class="line">            title: res &amp;&amp; res.data &amp;&amp; res.data.msg || <span class="string">'服务异常，请稍后重试'</span>,</span><br><span class="line">            icon: <span class="string">'none'</span></span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;, <span class="number">0</span>)</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-数据管理"><a href="#4-数据管理" class="headerlink" title="4. 数据管理"></a>4. 数据管理</h2><p>小程序本身缺少全局状态管理和跨页通讯。<br>如果业务和逻辑没那么复杂，我们可以使用 <code>globalData</code> 或 <code>localStorage</code> 作为数据中转。<br>如果数据管理比较复杂，可以考虑接入 <a href="https://github.com/Tencent/westore" target="_blank" rel="noopener">westore</a> 来解决这个痛点。</p>
-<h2 id="5-常用方法的封装"><a href="#5-常用方法的封装" class="headerlink" title="5. 常用方法的封装"></a>5. 常用方法的封装</h2><h3 id="5-1-环境变量的控制"><a href="#5-1-环境变量的控制" class="headerlink" title="5.1 环境变量的控制"></a>5.1 环境变量的控制</h3><p>Env.js 中进行统一管理：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  dev: &#123;</span><br><span class="line">    api: &apos;https://dev.api.com/&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  test01: &#123;</span><br><span class="line">    api: &apos;https://test01.api.com/&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  test02: &#123;</span><br><span class="line">    api: &apos;https://test02.api.com/&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  production: &#123;</span><br><span class="line">    api: &apos;https://pro.api.com/&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在页面中的用法也很简单：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">onLoad: <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">  app.checkSession().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.otherMethods()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>在请求时根据当前环境选择相应配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let Env_config = require(&apos;./env/index&apos;)</span><br><span class="line">let env = &apos;dev&apos;</span><br><span class="line"></span><br><span class="line">console.log(Env_config[env])</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-2-request-封装"><a href="#5-2-request-封装" class="headerlink" title="5.2 request 封装"></a>5.2 request 封装</h3><p><code>wx.request</code> 是我们向后端请求接口的 <code>API</code>。<br>在项目中，我们要对其进行封装，在 <code>header</code> 或 <code>data</code> 中加入公共参数，还需要对错误进行统一拦截，以及根据环境请求不同的接口。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">getRequest: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    wx.request(&#123;</span><br><span class="line">      url: Env_config[env].api + data.url,</span><br><span class="line">      method: data.method || <span class="string">"GET"</span>,</span><br><span class="line">      header: <span class="built_in">Object</span>.assign(&#123;</span><br><span class="line">        <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span>,</span><br><span class="line">        <span class="string">"Server-Token"</span>: <span class="string">"xxxxxx"</span></span><br><span class="line">      &#125;, data.header),</span><br><span class="line">      data: data.data,</span><br><span class="line">      success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (res &amp;&amp; res.statusCode === <span class="number">200</span>) &#123;</span><br><span class="line">          resolve(res)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (res.statusCode === <span class="number">401</span>) &#123;</span><br><span class="line">          wx.showToast(&#123;</span><br><span class="line">            title: <span class="string">'登录失效，请重新登录'</span>,</span><br><span class="line">            icon: <span class="string">'none'</span>,</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">              <span class="comment">// 登录失效的回调</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          wx.showToast(&#123;</span><br><span class="line">            title: res.msg || <span class="string">'服务异常，请稍后重试'</span>,</span><br><span class="line">            icon: <span class="string">'none'</span></span><br><span class="line">          &#125;)</span><br><span class="line">          reject(res)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      fail: <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">        wx.showToast(&#123;</span><br><span class="line">          title: err.msg || <span class="string">'服务异常，请稍后重试'</span>,</span><br><span class="line">          icon: <span class="string">'none'</span></span><br><span class="line">        &#125;)</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样我们就可以对封装的接口进行 <code>promise</code> 化的处理：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> app.getRequest(&#123;</span><br><span class="line">    url: <span class="string">"api/test"</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">      span: <span class="number">30</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 成功回调</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 失败回调</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>我们也可以对其他的微信 <code>API</code> 做 <code>Promise</code> 化的处理封装，避免在复杂的业务逻辑中陷入回调地狱。</p>
-<p>如果想支持 <code>async/await</code> 的语法，可以尝试引入 <code>facebook</code> 的 <code>regeneratorRuntime</code>。</p>
-<p><a href="https://github.com/young-js/wx-promise-pro" target="_blank" rel="noopener">wx-promise-pro</a> 这个将小程序异步 <code>API</code> <code>Promsie</code> 化的工具库，也不失为一种不错的选择。</p>
-<h3 id="5-3-多环境切换"><a href="#5-3-多环境切换" class="headerlink" title="5.3 多环境切换"></a>5.3 多环境切换</h3><p>因为小程序只会存在一个预览版本，所以测试同学需要在其他环境测试时，都需要找到开发同学手动更改环境并重新发布体验版，非常之麻烦。<br>所以打算利用微信摇一摇来实现环境的切换。<br>由于这周时间比较紧张，所以下次再贴代码实现吧！</p>
-<p>其他的相关问题想到再补充，大家也可以提一提自己的看法。</p>
 
       
     </div>
@@ -519,8 +432,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/11/miniProgram/" rel="next" title="微信小程序底层架构">
-                <i class="fa fa-chevron-left"></i> 微信小程序底层架构
+              <a href="/2019/08/09/miniProgramPerformance/" rel="next" title="小程序性能优化技巧">
+                <i class="fa fa-chevron-left"></i> 小程序性能优化技巧
               </a>
             
           </div>
@@ -529,8 +442,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/25/miniProgram-start2/" rel="prev" title="小程序项目构建（二）">
-                小程序项目构建（二） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/17/jsVersion/" rel="prev" title="js中版本号的比较">
+                js中版本号的比较 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -680,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-框架选型"><span class="nav-text">1. 框架选型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-自动构建"><span class="nav-text">2. 自动构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-css-预处理"><span class="nav-text">3. css 预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-数据管理"><span class="nav-text">4. 数据管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-常用方法的封装"><span class="nav-text">5. 常用方法的封装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-环境变量的控制"><span class="nav-text">5.1 环境变量的控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-request-封装"><span class="nav-text">5.2 request 封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-多环境切换"><span class="nav-text">5.3 多环境切换</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-登录流程"><span class="nav-text">1. 登录流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-登录逻辑："><span class="nav-text">2. 登录逻辑：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-遇到的问题"><span class="nav-text">3. 遇到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-具体代码"><span class="nav-text">4. 具体代码</span></a></li></ol></div>
             
 
           </div>
